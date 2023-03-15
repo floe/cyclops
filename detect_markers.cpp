@@ -196,8 +196,9 @@ int main(int argc, char *argv[]) {
         if(totalIterations % 30 == 0) {
             cout << "Detection Time = " << currentTime * 1000 << " ms "
                  << "(Mean = " << 1000 * totalTime / double(totalIterations) << " ms)" << endl;
+            cout << "Detected markers: " << ids.size() << endl;
         }
-        //continue;
+        continue;
 
         // draw results
         image.copyTo(imageCopy);
