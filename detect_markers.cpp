@@ -161,15 +161,8 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    VideoCapture inputVideo;
-    int waitTime;
-    if(!video.empty()) {
-        inputVideo.open(video);
-        waitTime = 0;
-    } else {
-        inputVideo.open(camId);
-        waitTime = 10;
-    }
+    VideoCapture inputVideo("/dev/video0",cv::CAP_V4L2);
+    int waitTime = 10;
 
     double totalTime = 0;
     int totalIterations = 0;
@@ -197,6 +190,7 @@ int main(int argc, char *argv[]) {
             cout << "Detection Time = " << currentTime * 1000 << " ms "
                  << "(Mean = " << 1000 * totalTime / double(totalIterations) << " ms)" << endl;
             cout << "Detected markers: " << ids.size() << endl;
+            cout << "Size: " << image.size() << endl;
         }
         continue;
 
